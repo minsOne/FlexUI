@@ -1,5 +1,5 @@
 //
-//  FlexHStack.swift
+//  FlexVStack.swift
 //  FlexUI
 //
 //  Created by 이우섭 on 2022/06/27.
@@ -8,8 +8,8 @@
 import FlexLayout
 import UIKit
 
-public struct FlexHStack: FlexView, FlexDefinable {
-    public var view: UIView
+public struct FlexVStack: FlexView {
+    public let view: UIView
     private let subContents: [FlexView]
     
     public init(view: UIView = UIView(),
@@ -18,15 +18,16 @@ public struct FlexHStack: FlexView, FlexDefinable {
                 @FlexViewBuilder _ content: FlexViewContent) {
         self.view = view
         self.subContents = content()
-        self.view.flex.justifyContent(justifyContent).alignItems(alignItems)
+
+        view.flex
+            .justifyContent(justifyContent)
+            .alignItems(alignItems)
     }
     
-    func define(superFlex: Flex) {
+    public func define(superFlex: Flex) {
         let stack = superFlex.addItem(view)
-            .direction(.row)
-        
-        for subContent in subContents.compactMap({ $0 as? FlexDefinable }) {
-            subContent.define(superFlex: stack)
-        }
+            .direction(.column)
+
+        subContents.define(flex: stack)
     }
 }

@@ -8,16 +8,16 @@
 import FlexLayout
 import UIKit
 
-public struct FlexSpacer: FlexView, FlexDefinable {
-    public var view: UIView
+public struct FlexSpacer: FlexView {
+    public let view: UIView
     
     public init(width: CGFloat? = nil, height: CGFloat? = nil) {
         self.view = UIView()
-        self.view.isHidden = true
-        self.view.flex.width(width).height(height)
+        view.isHidden = true
+        view.flex.width(width).height(height)
     }
     
-    func define(superFlex: Flex) {
+    public func define(superFlex: Flex) {
         superFlex.addItem(view)
     }
 }
