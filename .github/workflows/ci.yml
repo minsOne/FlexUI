@@ -6,10 +6,10 @@ on:
 
 jobs:
   test:
+    name: Run PR-CI
     runs-on: macOS-latest
     env:
-      PROJECT: FlexUI.xcodeproj
-      SCHEME: FlexUI-Package
+      SCHEME: FlexUI
       CODECOV_PACKAGE_NAME: FlexUI
     strategy:
       matrix:
@@ -18,13 +18,8 @@ jobs:
             destination: platform=iOS Simulator,name=iPhone 11 Pro,OS=latest
 
     steps:
-    - uses: actions/checkout@v1
-
-    - name: List SDKs and Devices
-      run: xcodebuild -showsdks
-
-    - name: Generate Xcode Project
-      run: swift package generate-xcodeproj
+    - name: Checkout the Git repository
+      uses: actions/checkout@v2
 
     - name: Build and Test
       run: |
