@@ -15,7 +15,7 @@ public struct FlexItem: FlexView {
         self.view = view
     }
     
-    public func define(superFlex: Flex) {
-        superFlex.addItem(view)
+    public func define(superFlex flex: Flex) {
+        flex.addItem(view)
     }
 }

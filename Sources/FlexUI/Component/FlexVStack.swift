@@ -12,7 +12,7 @@ public struct FlexVStack: FlexView {
     public let view: UIView
     private let subContents: [FlexView]
     
-    public init(view: UIView = UIView(),
+    public init(_ view: UIView = UIView(),
                 justifyContent: Flex.JustifyContent = .start,
                 alignItems: Flex.AlignItems = .stretch,
                 @FlexViewBuilder _ content: FlexViewContent) {
@@ -24,8 +24,8 @@ public struct FlexVStack: FlexView {
             .alignItems(alignItems)
     }
     
-    public func define(superFlex: Flex) {
-        let stack = superFlex.addItem(view)
+    public func define(superFlex flex: Flex) {
+        let stack = flex.addItem(view)
             .direction(.column)
 
         subContents.define(flex: stack)

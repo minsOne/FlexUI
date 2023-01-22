@@ -9,7 +9,7 @@ import FlexLayout
 import UIKit
 
 @discardableResult
-public func FlexRoot(container: UIView,
+public func FlexRoot(_ container: UIView,
                      direction: Flex.Direction = .column,
                      justifyContent: Flex.JustifyContent = .start,
                      alignItems: Flex.AlignItems = .stretch,
